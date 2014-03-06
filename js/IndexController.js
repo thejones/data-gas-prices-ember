@@ -16,13 +16,23 @@
  * email: contracts@esri.com
  */
 define(function () {
-  return Ember.Controller.extend({
-    featureLayer: null,
 
-    onFeatureLayerChanged: function () {
-      // When the feature layer is set we can broadcast that we are ready
-      if (!Ember.isEmpty(this.get("featureLayer")))
-        this.send("isReady");
-    }.observes("featureLayer")
+  // This is our index route controller. Its main mission is to carry the state of route.
+  // It will receive the feature layer the model
+  return Ember.ObjectController.extend({
+
+    // When both the map and the fetaure layer are ready we need to associate them together
+    onFeatureLayerOrMapChanged: function () {
+      var featureLayer = this.get("featureLayer");
+      var map = this.get("map");
+      if (Ember.isEmpty(featureLayer) || Ember.isEmpty(map))
+        return;
+
+      // Add the feature layer to the map
+      map.addLayer(featureLayer);
+
+      // We can inform the route that we are ready to go
+      this.send("isReady");
+    }.observes("featureLayer", "map")
   });
 });

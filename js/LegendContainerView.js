@@ -25,7 +25,7 @@ define([
 
     legendView: Ember.View.extend({
 
-      mapChanged: function () {
+      featureLayerOrMapChanged: function () {
         var featureLayer = this.get("controller.featureLayer");
         if (Ember.isEmpty(featureLayer))
           return;
@@ -42,14 +42,14 @@ define([
         }, this.elementId);
 
         this.legend.startup();
-      }.observes("controller.featureLayer").on("init")
+      }.observes("controller.featureLayer", "controller.map").on("init")
     }),
 
     tipView: Ember.View.extend({
       classNames: ["tip"],
       templateName: "tip",
 
-      mapChanged: function () {
+      featureLayerChanged: function () {
         var featureLayer = this.get("controller.featureLayer");
         if (Ember.isEmpty(featureLayer))
           return;

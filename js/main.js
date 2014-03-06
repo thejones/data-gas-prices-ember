@@ -15,6 +15,8 @@
 
  * email: contracts@esri.com
  */
+
+// Dojo AMD stuff
 var dojoConfig = {
   packages: [
     {
@@ -24,36 +26,55 @@ var dojoConfig = {
   ]
 };
 
+// This is our main AMD module.
+// We will create the Ember application and define its objects.
 require(dojoConfig, [
+  "esri/geometry/Extent",
   "app/IndexRoute",
   "app/IndexController",
   "app/LegendContainerView",
   "app/MapContainerView"
-], function (IndexRoute, IndexController, LegendContainerView, MapContainerView) {
+], function (Extent, IndexRoute, IndexController, LegendContainerView, MapContainerView) {
 
-  Ember.onerror = function (error) {
-    console.error("ERROR: " + error);
-  };
+  // Start the Ember App
+  window.App = Ember.Application.create({});
 
-  window.App = Ember.Application.create({
-    LOG_BINDINGS: true,
-    LOG_VIEW_LOOKUPS: true,
-    LOG_TRANSITIONS: true,
-    LOG_TRANSITIONS_INTERNAL: true
+  // Define a constant for this application that is the extent for the map
+//  App.boundingExtent = new Extent({
+//    "xmin": -2332499,
+//    "ymin": -1530060,
+//    "xmax": 2252197,
+//    "ymax": 1856904,
+//    "spatialReference": {
+//      "wkid": 102003
+//    }
+//  });
+ App.boundingExtent = new Extent({
+    "xmin": -6293496,
+    "ymin": -1530060,
+    "xmax": 2256320,
+    "ymax": 4592025,
+    "spatialReference": {
+      "wkid": 102003
+    }
   });
 
-//  App.deferReadiness();
+  // Define the various Ember objects. A series of objects will be defined by default by Ember.
+  // For example the IndexView will be auto generated using the template defined in index.html.
 
   // Define an application view so we can set the class names
   App.ApplicationView = Ember.View.extend({
-    classNames: ["full-container"],
-    templateName: "application"
+    classNames: ["full-container"]
   });
 
+  // This application is directly on the index route. Define the route so we can handle events
   App.IndexRoute = IndexRoute;
+
+  // The index controller will store the sate of the application
   App.IndexController = IndexController;
+
+  // Our app is composed of a map view and a legend view that will work based on the index controller
   App.LegendContainerView = LegendContainerView;
   App.MapContainerView = MapContainerView;
 
-//  App.advanceReadiness();
 });

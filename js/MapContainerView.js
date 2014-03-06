@@ -22,15 +22,6 @@ define([
 
   return Ember.ContainerView.extend({
 
-    mapView: MapView,
-
-    willDestroyElement: function () {
-
-      if (this.borderContainer)
-        this.borderContainer.destroy();
-      this.borderContainer = null;
-    },
-
     didInsertElement: function () {
 
       // Create a dojo border container
@@ -47,7 +38,7 @@ define([
       // because we are use border container we need to reverse the order. First create the border container
       // then create the child views that will attach their pane via the addPane method.
       Ember.run.scheduleOnce("afterRender", this, function () {
-        this.pushObject(this.mapView.create());
+        this.pushObject(MapView.create({}));
       });
     },
 
