@@ -42,7 +42,11 @@
   <div class='title shadow info'>Current Gas Prices by State</div>
 </script>
 
-<!-- This template is used for the tip-->
+<!-- This template is used for the tip -->
+<!-- Compare to its equivalent sample https://developers.arcgis.com/javascript/jssamples/data_gas_prices.html, -->
+<!-- this is were ember shines. In the original sample, a dojo module had to be written to handle data binding. -->
+<!-- Here we just bind the tip div to the view attributes data . If these are present then we use them to show information. -->
+<!-- If these attributes are not present in the view then nothing is showed. You can look at LegendContainerView.js for details. -->
 <script type="text/x-handlebars" data-template-name="tip">
   {{#if view.attributes}}
     <strong>{{view.attributes.STATE_NAME}}: ${{view.attributes.GAS_DISPLAY}}</strong>

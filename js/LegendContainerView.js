@@ -18,11 +18,13 @@
 define([
   "esri/dijit/Legend"
 ], function (Legend) {
-  
+
+  // This view is made of two child views, the feature layer legend view and the tip view
   return Ember.ContainerView.extend({
     classNames: ["legend", "shadow", "info"],
     childViews: ["legendView", "tipView"],
 
+    // A div that display the legend using the SDK legend dijit
     legendView: Ember.View.extend({
 
       featureLayerOrMapChanged: function () {
@@ -45,6 +47,7 @@ define([
       }.observes("controller.featureLayer", "controller.map").on("init")
     }),
 
+    // This is the Tip View. Its mission is to monitor the mouse activity on the feature layer.
     tipView: Ember.View.extend({
       classNames: ["tip"],
       templateName: "tip",
@@ -60,10 +63,12 @@ define([
 
       }.observes("controller.featureLayer").on("init"),
 
+      // If the mouse is over a feature then capture its attributes
       onMouseOverFeatureLayer: function (e) {
         this.set("attributes", e.graphic.attributes);
       },
 
+      // If the mouse is not anymore on a feature then set the current attributes to null
       onMouseOutFetaureLayer: function () {
         this.set("attributes", null);
       }

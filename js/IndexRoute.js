@@ -36,8 +36,8 @@ define([
 
     actions: {
 
-      // Define a "isReady" action. When raised by the views or controllers of the route, it means that all the element are ready and
-      // we can safely remove the loading div
+      // Define a "isReady" action. When the isReady event is raised by a view or a controller in the route it will be capture by this action handler.
+      // When it happens we can safely remove the loading div.
       isReady: function () {
         $(".loading").remove();
       }
