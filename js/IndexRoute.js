@@ -17,7 +17,6 @@
  */
 define([
   "dojo/promise/all",
-  "dojo/on",
   "dojo/_base/Color",
   "dojo/number",
   "esri/request",
@@ -25,11 +24,10 @@ define([
   "esri/tasks/QueryTask",
   "esri/geometry/Extent",
   "esri/layers/FeatureLayer",
-  "esri/renderers/SimpleRenderer",
   "esri/renderers/ClassBreaksRenderer",
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol"
-], function (all, on, Color, number, esriRequest, Query, QueryTask, Extent, FeatureLayer, SimpleRenderer, ClassBreaksRenderer, SimpleLineSymbol, SimpleFillSymbol) {
+], function (all, Color, number, esriRequest, Query, QueryTask, Extent, FeatureLayer, ClassBreaksRenderer, SimpleLineSymbol, SimpleFillSymbol) {
 
   // Define the index route
   return Ember.Route.extend({

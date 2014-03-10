@@ -40,15 +40,6 @@ require(dojoConfig, [
   window.App = Ember.Application.create({});
 
   // Define a constant for this application that is the extent for the map
-//  App.boundingExtent = new Extent({
-//    "xmin": -2332499,
-//    "ymin": -1530060,
-//    "xmax": 2252197,
-//    "ymax": 1856904,
-//    "spatialReference": {
-//      "wkid": 102003
-//    }
-//  });
  App.boundingExtent = new Extent({
     "xmin": -6293496,
     "ymin": -1530060,
