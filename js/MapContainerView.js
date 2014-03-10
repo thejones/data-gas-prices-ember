@@ -22,21 +22,22 @@ define([
 
   return Ember.ContainerView.extend({
 
+    classNames: ["map-container"],
+
     didInsertElement: function () {
 
       // Create a dojo border container
       this.borderContainer = new BorderContainer(
         {
           design: "headline",
-          gutters: false,
-          style: "width: 100%; height: 100%; margin: 0;"
+          gutters: false
         }, this.elementId);
 
       this.borderContainer.startup();
 
       // Normally a container view will create its child views via the property childViews, however
-      // because we are use border container we need to reverse the order. First create the border container
-      // then create the child views that will attach their pane via the addPane method.
+      // because we are using border container we need to reverse the order. First create the border container
+      // then create the child views that will attach their content pane via the addPane method.
       Ember.run.scheduleOnce("afterRender", this, function () {
         this.pushObject(MapView.create({}));
       });

@@ -59,7 +59,7 @@ define([
 
         // Wire the feature layer mouse event to the tip
         featureLayer.on("mouse-over", this.onMouseOverFeatureLayer.bind(this));
-        featureLayer.on("mouse-out", this.onMouseOutFetaureLayer.bind(this));
+        featureLayer.on("mouse-out", this.onMouseOutFeatureLayer.bind(this));
 
       }.observes("controller.featureLayer").on("init"),
 
@@ -69,7 +69,7 @@ define([
       },
 
       // If the mouse is not anymore on a feature then set the current attributes to null
-      onMouseOutFetaureLayer: function () {
+      onMouseOutFeatureLayer: function () {
         this.set("attributes", null);
       }
     })
