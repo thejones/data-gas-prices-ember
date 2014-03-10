@@ -1,7 +1,8 @@
 # ArcGIS API for Javascript "Gas price data by state mashup" sample written with Ember
 
-* Original sample: "Gas price data by state mashup" at http://developers.arcgis.com/javascript/samples/data_gas_prices/
-* More about Ember: http://emberjs.com
+* Original sample: ["Gas price data by state mashup"](http://developers.arcgis.com/javascript/samples/data_gas_prices/)
+* More about [Ember](http://emberjs.com)
+* Ember is highly based on [Cocoa MVC model](https://developer.apple.com/library/mac/documentation/general/conceptual/devpedia-cocoacore/MVC.html)
 
 ## Contributing
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
@@ -21,6 +22,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-A copy of the license is available in the repository's [license.txt]( https://raw.github.com/Esri/esri-leaflet/master/license.txt) file.
+A copy of the license is available in the repository's [license.txt](https://raw.github.com/Esri/esri-leaflet/master/license.txt) file.
 
 
