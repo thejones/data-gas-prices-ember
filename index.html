@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSAPI + Ember</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css">
+  <link rel="stylesheet" href="//js.arcgis.com/3.8/js/esri/css/esri.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="nihilo">
+
+<!-- Load the scripts in the body for faster response -->
+<script src="libs/jquery/jquery-1.10.2.min.js"></script>
+<script src="libs/ember/handlebars.min.js"></script>
+<script src="libs/ember/ember.js"></script>
+<script data-dojo-config="async:1" src="//js.arcgis.com/3.8"></script>
+<script src="js/main.js"></script>
+
+<!-- We create a div in the body to show the loading feedback. We could have used Ember for this. -->
+<!-- However if we want quicker display it's better to have it directly in the body. -->
+<!-- This div will be removed later when all the elements are ready. -->
+<div class="shadow loading">
+  Getting Latest Gas Price Data...
+  <img src="//dl.dropbox.com/u/2654618/loading_gray_circle.gif">
+</div>
+
+<!-- This is the main ember template used for the application. {{outlet}} is used by the routes to place their view -->
+<script type="text/x-handlebars">
+  {{outlet}}
+</script>
+
+<!-- This sample is made of a single route "IndexRoute". This template will be placed by the IndexRoute in the Application outlet. -->
+<!-- We are asking to render two views in this template: the legend container view and the map container view. -->
+<!-- We are using specialized views because we have to hook dijits that require special handling. -->
+<script type="text/x-handlebars" data-template-name="index">
+  {{view App.LegendContainerView}}
+  {{view App.MapContainerView}}
+</script>
+
+<!-- This template is used for the title -->
+<script type="text/x-handlebars" data-template-name="map">
+  <div class='title shadow info'>Current Gas Prices by State</div>
+</script>
+
+<!-- This template is used for the tip -->
+<!-- Compare to its equivalent sample https://developers.arcgis.com/javascript/jssamples/data_gas_prices.html, -->
+<!-- this is were ember shines. In the original sample, a dojo module had to be written to handle data binding. -->
+<!-- Here we just bind the tip div to the view attributes data . If these are present then we use them to show information. -->
+<!-- If these attributes are not present in the view then nothing is showed. You can look at LegendContainerView.js for details. -->
+<script type="text/x-handlebars" data-template-name="tip">
+  {{#if view.attributes}}
+    <strong>{{view.attributes.STATE_NAME}}: ${{view.attributes.GAS_DISPLAY}}</strong>
+  {{/if}}
+</script>
+
+</body>
+</html>
