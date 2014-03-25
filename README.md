@@ -4,6 +4,8 @@
 * More about [Ember](http://emberjs.com)
 * Ember is highly based on [Cocoa MVC model](https://developer.apple.com/library/mac/documentation/general/conceptual/devpedia-cocoacore/MVC.html)
 
+Try it ["http://ffaubry.github.io/data-gas-prices-ember"](http://ffaubry.github.io/data-gas-prices-ember)
+
 ## Contributing
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
